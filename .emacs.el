@@ -1,0 +1,35 @@
+(global-font-lock-mode t)
+(tool-bar-mode 0)
+(setq c-basic-offset 4)
+(setq-default indent-tabs-mode nil)
+(set-default-font "9x15")
+
+
+(load "/usr/share/emacs/site-lisp/emacs-goodies-el/color-theme-library.el")
+(require 'color-theme)
+(color-theme-gray30)
+
+(add-to-list 'auto-mode-alist '("\\.h" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.c" . c++-mode))
+(setq c-mode-hook
+    (function (lambda ()
+                (setq indent-tabs-mode nil)
+                (setq c-indent-level 4)
+                (c-set-offset 'substatement-open 0)
+                )
+              )
+    )
+(setq c++-mode-hook
+    (function (lambda ()
+                (setq indent-tabs-mode nil)
+                (setq c-indent-level 4)
+                (c-set-offset 'substatement-open 0)
+                )
+              )
+    )
+
+(load "~/.emacs.d/redo+.elc")
+(require 'redo+)
+(global-set-key [(meta backspace)] 'undo)
+;(global-set-key [(meta control backspace)] 'redo)
+(global-set-key [(meta shift backspace)] 'redo)
